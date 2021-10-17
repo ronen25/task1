@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task1
+  labels:
+    app: task1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: task1
+  
+  template:
+    metadata:
+      labels:
+        app: task1
+    
+    spec:
+      containers:
+      - name: task1
+        image: task1
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 8001
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: task1
+spec:
+  selector:
+    app: task1 
+  ports:
+  - name: main
+    protocol: TCP
+    port: 8001
+    targetPort: 8001
