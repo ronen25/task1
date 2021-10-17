@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: task1
-        image: task1
+        image: task1:latest
         imagePullPolicy: Never
         resources:
           limits:

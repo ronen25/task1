@@ -19,7 +19,7 @@ func main() {
 		log.Fatalf("Error: Missing `SERVER_PORT` environment variable")
 	}
 
-	log.Printf("Starting server on port .")
+	log.Printf("Starting server on port %s", serverPort)
 
 	bindAddr := fmt.Sprintf(":%s", serverPort)
 	if err := http.ListenAndServe(bindAddr, nil); err != nil {
